@@ -1,15 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var babel = require('gulp-babel');
 var webserver = require('gulp-webserver');
-
-gulp.task('default', function() {
-    gulp.src('app/js/app.js')
-        .pipe(babel({
-            presets: ['env']
-        }))
-        .pipe(gulp.dest('dist'));
-});
 
 gulp.task('sass', function(){
   return gulp.src('./app/scss/style.scss')
@@ -28,3 +19,5 @@ gulp.task('webserver', function() {
       open: true
     }));
 });
+
+gulp.task('default', [ 'sass', 'webserver' ]);
